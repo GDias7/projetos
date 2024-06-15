@@ -1,0 +1,2 @@
+Mineral silver found at position(3, 1) 
+Mineral silver found at position(7, 4) 

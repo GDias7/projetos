@@ -1,0 +1,2 @@
+Mineral bronze found at position(4, 2)
+Mineral bronze found at position(7, 5)

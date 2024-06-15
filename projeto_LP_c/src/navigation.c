@@ -1,33 +1,15 @@
-#include "../include/navigation.h"
+#include "./include/navigation.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-#define MAX_COORDS 1000 // Maximum number of coordinates
-#define MAX_ROWS 100 // Maximum number of map rows
-#define MAX_COLS 100 // Maximum number of map cols
-
-typedef struct map {
-    int sz_x;
-    int sz_y;
-    int map_data[MAX_ROWS][MAX_COLS]; 
-} tMap;
-
-typedef struct pos {
-    int x;
-    int y;
-} tPos;
-
-typedef struct path {
-    int num_coords;
-    tPos path[MAX_COORDS];
-} tPath;
+#include "./include/list.h"
+#include "./include/info.h"
 
 tPath read_coordinates(void) {
     tPath path;
 
-    FILE *file = fopen("../data/path.txt", "r");
+    FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\\\projeto_LP_c\\data\\path.txt", "r");
     if (file == NULL) {
-        fprintf(stderr, "Error opening file!");
+        fprintf(stderr, "Error opening file! 1");
         exit(1);
     }
 
@@ -45,13 +27,13 @@ tPath read_coordinates(void) {
 
 tMap read_map_from_file(void) {
     tMap map;
-    FILE *file = fopen("../data/map.txt", "r");
+    FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\map.txt", "r");
     if (file == NULL) {
-        fprintf(stderr, "Error opening file!");
+        fprintf(stderr, "Error opening file! 2");
         exit(1);
     }
 
-    // Read the number of rows and columns
+    // Read the number of ys and columns
     fscanf(file, "%d %d", &map.sz_x, &map.sz_y);
 
     // Read the map data
