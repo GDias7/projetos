@@ -52,15 +52,7 @@ int main() {
         silver(actual);
         bronze(actual);
 
-        
         tempo_total = tempo_total + TRAVEL_TIME;
-        /*charging(&bateria, next_pos, actual, map_data);
-        if (bateria.Capacity == Capacity_Minimum && map_data[actual[0]][actual[1]] != IMPOSSIBILIDADE) {
-            tempo_total = tempo_total + RECHARGE_TIME;
-        } else if(  (map_data[next_pos[0]][next_pos[1]] == IMPOSSIBILIDADE) && (bateria.Capacity == Capacity_Minimum2) ){
-            tempo_total = tempo_total + RECHARGE_TIME;
-        }*/
-       
     }
     char* status = (actual[0] == pos_final.x && actual[1] == pos_final.y) ? "success" : "failure";
     printf("total_time: %d\n", tempo_total);

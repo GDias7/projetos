@@ -44,6 +44,4 @@ void descarregar(Pilha *pilha);
 void recarregar(Pilha *pilha);
 void charging(int actual[2]);
 
-//void charging(Pilha *pilha, int next_pos[2], int actual[2], int **map_data);
-
 #endif

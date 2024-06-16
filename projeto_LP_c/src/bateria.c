@@ -81,39 +81,3 @@ void charging(int actual[2]) {
     fprintf(file, "Reloading into position (%d, %d)\n", x, y);
     fclose(file);
 }
-/*void charging(Pilha *pilha, int next_pos[2], int actual[2], int **map_data) {
-
-    // Obter a posição atual
-    int y = actual[1];
-    int x = actual[0];
-
-    int tempo_total;
-    // Checando se e possivel recarregar
-   if (((pilha->Capacity <= Capacity_Minimum) && (map_data[actual[0]][actual[1]] != IMPOSSIBILIDADE))||((pilha->Capacity == Capacity_Minimum2 ) && (map_data[next_pos[0]][next_pos[1]] == IMPOSSIBILIDADE))) {
-        pilha->Capacity = Capacity_Maximum;
-        printf("Battery recharged!\n");
-        // Abrir o arquivo para escrita
-        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\charging.txt", "a");
-        if (file == NULL) {
-            fprintf(stderr, "Error opening file for writing!\n");
-            return;
-            // Escrever cor no arquivo
-            fprintf(file, "Reloading into position (%d, %d)\n", x, y);
-            fclose(file);
-        }
-        
-    } else if((pilha->Capacity == Capacity_Minimum2 ) && (map_data[next_pos[0]][next_pos[1]] == IMPOSSIBILIDADE)){
-        pilha->Capacity = Capacity_Maximum;
-        printf("Battery recharged!\n");
-        // Abrir o arquivo para escrita
-        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\charging.txt", "a");
-        if (file == NULL) {
-            fprintf(stderr, "Error opening file for writing!\n");
-            return;
-            // Escrever cor no arquivo
-            fprintf(file, "Reloading into position (%d, %d)\n", x, y);
-            fclose(file);
-        }
-
-    }
-}*/
