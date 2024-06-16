@@ -69,6 +69,7 @@ void charging(int actual[2]) {
     int y = actual[1];
     int x = actual[0];
 
+
     // Abrir o arquivo para escrita
     FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\charging.txt", "a");
     if (file == NULL) {
@@ -80,13 +81,7 @@ void charging(int actual[2]) {
     fprintf(file, "Reloading into position (%d, %d)\n", x, y);
     fclose(file);
 }
-/*void charging(Pilha *pilha, int next_pos[2], int actual[2]) {
-
-    // Ler o mapa do arquivo
-    tMap map = read_map_from_file();
-
-    // Obter a matriz de dados do mapa
-    int **map_data = get_map();
+/*void charging(Pilha *pilha, int next_pos[2], int actual[2], int **map_data) {
 
     // Obter a posição atual
     int y = actual[1];
@@ -94,7 +89,7 @@ void charging(int actual[2]) {
 
     int tempo_total;
     // Checando se e possivel recarregar
-   if ((pilha->Capacity <= Capacity_Minimum) && (map_data[x][y] != IMPOSSIBILIDADE)) {
+   if (((pilha->Capacity <= Capacity_Minimum) && (map_data[actual[0]][actual[1]] != IMPOSSIBILIDADE))||((pilha->Capacity == Capacity_Minimum2 ) && (map_data[next_pos[0]][next_pos[1]] == IMPOSSIBILIDADE))) {
         pilha->Capacity = Capacity_Maximum;
         printf("Battery recharged!\n");
         // Abrir o arquivo para escrita
@@ -107,7 +102,7 @@ void charging(int actual[2]) {
             fclose(file);
         }
         
-    } else if((pilha->Capacity = Capacity_Minimum2 ) && (map_data[next_pos[0]][next_pos[1]] = IMPOSSIBILIDADE)){
+    } else if((pilha->Capacity == Capacity_Minimum2 ) && (map_data[next_pos[0]][next_pos[1]] == IMPOSSIBILIDADE)){
         pilha->Capacity = Capacity_Maximum;
         printf("Battery recharged!\n");
         // Abrir o arquivo para escrita
