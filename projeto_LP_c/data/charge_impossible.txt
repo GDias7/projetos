@@ -1,2 +1,4 @@
-Impossible to charge the battery in the position(6, 3)
-Impossible to charge the battery in the position(6, 3)
+ Impossible to charge the battery in the position (6, 3)
+  Impossible to charge the battery in the position (8, 4)
+  Impossible to charge the battery in the position (8, 4)
+ 

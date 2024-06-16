@@ -68,7 +68,6 @@ void charging(int actual[2]) {
     // Obter a posição atual
     int y = actual[1];
     int x = actual[0];
-    int color = map.map_data[8 - y][x];
 
     // Abrir o arquivo para escrita
     FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\charging.txt", "a");
@@ -77,7 +76,49 @@ void charging(int actual[2]) {
         return;
     }
 
-    // Escrever a cor no arquivo
+    // Escrever no arquivo
     fprintf(file, "Reloading into position (%d, %d)\n", x, y);
     fclose(file);
 }
+/*void charging(Pilha *pilha, int next_pos[2], int actual[2]) {
+
+    // Ler o mapa do arquivo
+    tMap map = read_map_from_file();
+
+    // Obter a matriz de dados do mapa
+    int **map_data = get_map();
+
+    // Obter a posição atual
+    int y = actual[1];
+    int x = actual[0];
+
+    int tempo_total;
+    // Checando se e possivel recarregar
+   if ((pilha->Capacity <= Capacity_Minimum) && (map_data[x][y] != IMPOSSIBILIDADE)) {
+        pilha->Capacity = Capacity_Maximum;
+        printf("Battery recharged!\n");
+        // Abrir o arquivo para escrita
+        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\charging.txt", "a");
+        if (file == NULL) {
+            fprintf(stderr, "Error opening file for writing!\n");
+            return;
+            // Escrever cor no arquivo
+            fprintf(file, "Reloading into position (%d, %d)\n", x, y);
+            fclose(file);
+        }
+        
+    } else if((pilha->Capacity = Capacity_Minimum2 ) && (map_data[next_pos[0]][next_pos[1]] = IMPOSSIBILIDADE)){
+        pilha->Capacity = Capacity_Maximum;
+        printf("Battery recharged!\n");
+        // Abrir o arquivo para escrita
+        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\charging.txt", "a");
+        if (file == NULL) {
+            fprintf(stderr, "Error opening file for writing!\n");
+            return;
+            // Escrever cor no arquivo
+            fprintf(file, "Reloading into position (%d, %d)\n", x, y);
+            fclose(file);
+        }
+
+    }
+}*/

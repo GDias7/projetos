@@ -28,24 +28,32 @@ int main() {
 
     while (actual[0] != pos_final.x || actual[1] != pos_final.y) {
         
+        get_next_pos(map_data, actual, next_pos);
+            if (next_pos[0] != -1 && next_pos[1] != -1) { // Check for invalid position
+                //printf("Next Coordinate: (%d,%d)\n", next_pos[0], next_pos[1]);
+            }
+
         printf("Actual Coordinate: (%d,%d)\n", actual[0], actual[1]);
+
+        actual[0] = next_pos[0];
+        actual[1] = next_pos[1];
+
         obstacles(actual);
         list_way(&lista,actual);
         charge_impossible(actual);
         gold(actual);
         silver(actual);
         bronze(actual);
-        
-        get_next_pos(map_data, actual, next_pos);
-            if (next_pos[0] != -1 && next_pos[1] != -1) { // Check for invalid position
-                //printf("Next Coordinate: (%d,%d)\n", next_pos[0], next_pos[1]);
-            }
-        actual[0] = next_pos[0];
-        actual[1] = next_pos[1];
-
         descarregar(&bateria);
+        
         tempo_total = tempo_total + TRAVEL_TIME;
-        if (bateria.Capacity <= LIMIT_RELOAD  * Capacity_Maximum && map_data[actual[0]][actual[1]] != IMPOSSIBILIDADE) {
+       /* charging(&bateria, next_pos, actual);
+        if (bateria.Capacity = Capacity_Minimum && map_data[actual[0]][actual[1]] != IMPOSSIBILIDADE) {
+            tempo_total = tempo_total + RECHARGE_TIME;
+        } else if(  (map_data[next_pos[0]][next_pos[1]] = IMPOSSIBILIDADE) && (bateria.Capacity = Capacity_Minimum2) ){
+            tempo_total = tempo_total + RECHARGE_TIME;
+        } */
+       if (bateria.Capacity <= LIMIT_RELOAD  * Capacity_Maximum && map_data[actual[0]][actual[1]] != IMPOSSIBILIDADE) {
             charging(actual);
             recarregar(&bateria);
             tempo_total = tempo_total + RECHARGE_TIME;

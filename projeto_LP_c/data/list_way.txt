@@ -1,10 +1,10 @@
 List elements:
+go
 bronze
 silver
 charge_impossible
-free_2_go
+go
 bronze
 silver
-free_2_go
+go
 gold
-free_2_go

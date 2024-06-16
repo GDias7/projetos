@@ -8,6 +8,7 @@
 
 #define Capacity_Maximum 4
 #define Capacity_Minimum 1
+#define Capacity_Minimum2 2
 #define RECHARGE_TIME 4
 #define LIMIT_RELOAD  0.25
 #define TRAVEL_TIME 2
@@ -42,4 +43,6 @@ void inicializar(Pilha *pilha);
 void descarregar(Pilha *pilha);
 void recarregar(Pilha *pilha);
 void charging(int actual[2]);
+//void charging(Pilha *pilha, int next_pos[2], int actual[2]);
+
 #endif

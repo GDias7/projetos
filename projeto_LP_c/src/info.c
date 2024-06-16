@@ -26,9 +26,8 @@ void charge_impossible(int actual[2]) {
     int y = actual[1];
     int x = actual[0];
 
-    // Verificar se a cor na posição é igual a 1
-    if (map.map_data[8 - y][x] == 1) {
-        int color = map.map_data[8 - y][x];
+    // Checando as coordenadas impossiveis para ocorrer a recarga das baterias
+    if (map.map_data[8 - y + 1][x] == 1) {
 
         printf("Impossible to charge the battery in the position (%d, %d)\n", x, y);
 
@@ -39,10 +38,103 @@ void charge_impossible(int actual[2]) {
             return;
         }
 
-        // Escrever a cor no arquivo
-        fprintf(file, "Impossible to charge the battery in the position(%d, %d)\n", x, y);
+        // Escrever no arquivo
+        fprintf(file, " Impossible to charge the battery in the position (%d, %d)\n ", x, y - 1);
+        fclose(file);
+
+    }else if (map.map_data[8 - y - 1][x] == 1) {
+
+        printf("Impossible to charge the battery in the position (%d, %d)\n", x, y);
+
+        // Abrir o arquivo para escrita
+        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\charge_impossible.txt", "a");
+        if (file == NULL) {
+            fprintf(stderr, "Error opening file for writing!\n");
+            return;
+        }
+
+        // Escrever no arquivo
+        fprintf(file, " Impossible to charge the battery in the position (%d, %d)\n ", x, y + 1);
+        fclose(file);
+
+    } else if (map.map_data[8 - y][x + 1] == 1) {
+
+        printf("Impossible to charge the battery in the position (%d, %d)\n", x, y);
+
+        // Abrir o arquivo para escrita
+        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\charge_impossible.txt", "a");
+        if (file == NULL) {
+            fprintf(stderr, "Error opening file for writing!\n");
+            return;
+        }
+
+        // Escrever no arquivo
+        fprintf(file, " Impossible to charge the battery in the position (%d, %d)\n ", x + 1, y);
+        fclose(file);
+
+    }else if (map.map_data[8 - y ][x - 1] == 1) {
+        
+
+        printf("Impossible to charge the battery in the position (%d, %d)\n", x, y);
+
+        // Abrir o arquivo para escrita
+        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\charge_impossible.txt", "a");
+        if (file == NULL) {
+            fprintf(stderr, "Error opening file for writing!\n");
+            return;
+        }
+
+        // Escrever no arquivo
+        fprintf(file, " Impossible to charge the battery in the position (%d, %d)\n ", x - 1, y);
+        fclose(file);
+
+    }else if (map.map_data[8 - y + 1][x + 1] == 1) {
+        
+
+        printf("Impossible to charge the battery in the position (%d, %d)\n", x, y);
+
+        // Abrir o arquivo para escrita
+        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\charge_impossible.txt", "a");
+        if (file == NULL) {
+            fprintf(stderr, "Error opening file for writing!\n");
+            return;
+        }
+
+        // Escrever no arquivo
+        fprintf(file, " Impossible to charge the battery in the position (%d, %d)\n ", x + 1, y - 1);
+        fclose(file);
+
+    } else if (map.map_data[8 - y + 1][x - 1] == 1) {
+
+        printf("Impossible to charge the battery in the position (%d, %d)\n", x, y);
+
+        // Abrir o arquivo para escrita
+        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\charge_impossible.txt", "a");
+        if (file == NULL) {
+            fprintf(stderr, "Error opening file for writing!\n");
+            return;
+        }
+
+        // Escrever no arquivo
+        fprintf(file, " Impossible to charge the battery in the position (%d, %d)\n ", x - 1, y - 1);
+        fclose(file);
+
+    }else if (map.map_data[8 - y - 1][x + 1] == 1) {
+        
+        printf("Impossible to charge the battery in the position (%d, %d)\n", x, y);
+
+        // Abrir o arquivo para escrita
+        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\charge_impossible.txt", "a");
+        if (file == NULL) {
+            fprintf(stderr, "Error opening file for writing!\n");
+            return;
+        }
+
+        // Escrever no arquivo
+        fprintf(file, " Impossible to charge the battery in the position (%d, %d)\n ", x + 1, y + 1);
         fclose(file);
     }
+
 }
 
 void list_way(tList *list, int actual[2]) {
@@ -56,11 +148,11 @@ void list_way(tList *list, int actual[2]) {
     // Obter a posição atual
     int y = actual[1];
     int x = actual[0];
-
     int color = map.map_data[8 - y][x];
+    
     switch (color)
     {
-    case 255:  insert_list(list, "free_2_go");  break;
+    case 255:  insert_list(list, "go");  break;
     case 191:  insert_list(list, "gold"); break;
     case 127:  insert_list(list, "silver"); break;
     case 63:  insert_list(list, "bronze"); break;
@@ -97,7 +189,6 @@ void gold(int actual[2]) {
 
     // Verificar se a cor na posição é igual a 191
     if (map.map_data[8 - y][x] == 191) {
-        int color = map.map_data[8 - y][x];
 
         printf("Mineral found: Gold\n");
 
@@ -109,7 +200,7 @@ void gold(int actual[2]) {
         }
 
         // Escrever a cor no arquivo
-        fprintf(file, "Mineral gold found at position (%d, %d) \n", color, x, y);
+        fprintf(file, "Mineral gold found at position (%d, %d) \n", x, y);
         fclose(file);
     }
 }
@@ -127,8 +218,6 @@ void silver(int actual[2]) {
 
     // Verificar se a cor na posição é igual a 127
     if (map.map_data[8 - y][x] == 127) {
-        int color = map.map_data[8 - y][x];
-
         printf("Mineral found: Silver\n");
 
         // Abrir o arquivo para escrita
@@ -157,7 +246,6 @@ void bronze(int actual[2]) {
 
     // Verificar se a cor na posição é igual a 63
     if (map.map_data[8 - y][x] == 63) {
-        int color = map.map_data[8 - y][x];
 
         printf("Mineral found: Bronze\n");
 
@@ -187,28 +275,8 @@ void obstacles(int actual[2]) {
 
     // Verificar se a obstaculos
     if (map.map_data[8 - y + 1][x] == 0) {
-        int color = map.map_data[8 - y][x];
 
         printf("obstacle_found\n");
-        printf(" Checking position (%d, %d)\n ", x, y + 1);
-
-        // Abrir o arquivo para escrita
-        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\obstacles.txt", "a");
-        if (file == NULL) {
-            fprintf(stderr, "Error opening file for writing!\n");
-            return;
-        }
-
-        // Escrever no arquivo
-        fprintf(file, " obstacle found at position (%d, %d)\n ", x, y + 1);
-        fclose(file);
-
-    }
-    if (map.map_data[8 - y - 1][x] == 0) {
-        int color = map.map_data[8 - y][x];
-
-        printf("obstacle_found\n");
-        printf(" Checking position (%d, %d)\n ", x, y - 1);
 
         // Abrir o arquivo para escrita
         FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\obstacles.txt", "a");
@@ -221,12 +289,24 @@ void obstacles(int actual[2]) {
         fprintf(file, " obstacle found at position (%d, %d)\n ", x, y - 1);
         fclose(file);
 
-    }
-    if (map.map_data[8 - y][x + 1] == 0) {
-        int color = map.map_data[8 - y][x];
+    }else if (map.map_data[8 - y - 1][x] == 0) {
 
         printf("obstacle_found\n");
-        printf(" Checking position (%d, %d)\n ", x, y);
+
+        // Abrir o arquivo para escrita
+        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\obstacles.txt", "a");
+        if (file == NULL) {
+            fprintf(stderr, "Error opening file for writing!\n");
+            return;
+        }
+
+        // Escrever no arquivo
+        fprintf(file, " obstacle found at position (%d, %d)\n ", x, y + 1);
+        fclose(file);
+
+    } else if (map.map_data[8 - y][x + 1] == 0) {
+
+        printf("obstacle_found\n");
 
         // Abrir o arquivo para escrita
         FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\obstacles.txt", "a");
@@ -239,12 +319,10 @@ void obstacles(int actual[2]) {
         fprintf(file, " obstacle found at position (%d, %d)\n ", x + 1, y);
         fclose(file);
 
-    }
-    if (map.map_data[8 - y ][x - 1] == 0) {
-        int color = map.map_data[8 - y][x];
+    }else if (map.map_data[8 - y ][x - 1] == 0) {
+        
 
         printf("obstacle_found\n");
-        printf(" Checking position (%d, %d)\n ", x, y);
 
         // Abrir o arquivo para escrita
         FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\obstacles.txt", "a");
@@ -257,12 +335,40 @@ void obstacles(int actual[2]) {
         fprintf(file, " obstacle found at position (%d, %d)\n ", x - 1, y);
         fclose(file);
 
-    }
-    if (map.map_data[8 - y + 1][x + 1] == 0) {
-        int color = map.map_data[8 - y][x];
+    }else if (map.map_data[8 - y + 1][x + 1] == 0) {
+        
 
         printf("obstacle_found\n");
-        printf(" Checking position (%d, %d)\n ", x, y);
+
+        // Abrir o arquivo para escrita
+        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\obstacles.txt", "a");
+        if (file == NULL) {
+            fprintf(stderr, "Error opening file for writing!\n");
+            return;
+        }
+
+        // Escrever no arquivo
+        fprintf(file, " obstacle found at position (%d, %d)\n ", x + 1, y - 1);
+        fclose(file);
+
+    } else if (map.map_data[8 - y + 1][x - 1] == 0) {
+
+        printf("obstacle_found\n");
+
+        // Abrir o arquivo para escrita
+        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\obstacles.txt", "a");
+        if (file == NULL) {
+            fprintf(stderr, "Error opening file for writing!\n");
+            return;
+        }
+
+        // Escrever no arquivo
+        fprintf(file, " obstacle found at position (%d, %d)\n ", x - 1, y - 1);
+        fclose(file);
+
+    }else if (map.map_data[8 - y - 1][x + 1] == 0) {
+        
+        printf("obstacle_found\n");
 
         // Abrir o arquivo para escrita
         FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\obstacles.txt", "a");
@@ -276,57 +382,6 @@ void obstacles(int actual[2]) {
         fclose(file);
 
     }
-    if (map.map_data[8 - y + 1][x - 1] == 0) {
 
-        printf("obstacle_found\n");
-        printf(" Checking position (%d, %d)\n ", x, y);
-
-        // Abrir o arquivo para escrita
-        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\obstacles.txt", "a");
-        if (file == NULL) {
-            fprintf(stderr, "Error opening file for writing!\n");
-            return;
-        }
-
-        // Escrever no arquivo
-        fprintf(file, " obstacle found at position (%d, %d)\n ", x - 1, y + 1);
-        fclose(file);
-
-    }
-    if (map.map_data[8 - y - 1][x + 1] == 0) {
-        
-        printf("obstacle_found\n");
-        printf(" Checking position (%d, %d)\n ", x, y);
-
-        // Abrir o arquivo para escrita
-        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\obstacles.txt", "a");
-        if (file == NULL) {
-            fprintf(stderr, "Error opening file for writing!\n");
-            return;
-        }
-
-        // Escrever no arquivo
-        fprintf(file, " obstacle found at position (%d, %d)\n ", x + 1, y - 1);
-        fclose(file);
-
-    }
-    if (map.map_data[8 - y - 1][x - 1] == 0) {
-
-        printf("obstacle_found\n");
-        printf(" Checking position (%d, %d)\n ", x, y);
-
-        // Abrir o arquivo para escrita
-        FILE *file = fopen("C:\\Users\\Davi Barros\\Documents\\Gabriel\\Projetos_codigos\\projeto_LP_c\\data\\obstacles.txt", "a");
-        if (file == NULL) {
-            fprintf(stderr, "Error opening file for writing!\n");
-            return;
-        }
-
-        // Escrever no arquivo
-        fprintf(file, " obstacle found at position (%d, %d)\n ", x - 1, y - 1);
-        fclose(file);
-
-    }
-    
 }
 
